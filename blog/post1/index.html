@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Personal website of Avinash Kondeti" />
+    <title>Post 1</title>
+    <link rel="stylesheet" href="/bundle.css" />
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+    
+  </head>
+  <body class="mx-auto max-w-3xl flex flex-col min-h-screen">
+    <header class="py-10 px-4">
+  <a href="/" class="text-2xl">Avinash Kondeti</a>
+</header>
+
+    <main class="px-6 py-4 flex-1">
+      <h2>Post 1</h2>
+<p>COntentknafo;ljksd;kdjsf;lkjdsd sdasd sadf asdf asdfjhasdfkljhasdf;lkjasdhflkajsd hlkj halskj hlkdj hlk jhaslkjhas dlkjashd fkljash lkjdh</p>
+<pre><code class="language-txt">[11ty] Watching…
+[11ty] File changed: blog/post1.md
+[11ty] Writing ./_site/index.html from ./index.html (liquid)
+[11ty] Writing ./_site/blog/post1/index.html from ./blog/post1.md (liquid)
+[11ty] Writing ./_site/blog/post2/index.html from ./blog/post2.md (liquid)
+[11ty] Writing ./_site/now/index.html from ./now/index.md (liquid)
+[11ty] Copied 1 Wrote 4 files in 0.01 seconds (v3.0.0)
+</code></pre>
+<pre><code class="language-py">import click
+import objc
+from CoreLocation import CLGeocoder
+from Foundation import NSRunLoop, NSDate
+
+def forward_geocode(address: str) -&gt; list[dict]:
+    with objc.autorelease_pool():
+        geocoder = CLGeocoder.alloc().init()
+        results = {&quot;placemarks&quot;: [], &quot;error&quot;: None}
+        completed = False
+        
+        def completion(placemarks, error):
+            nonlocal completed
+            if error:
+                results[&quot;error&quot;] = error.localizedDescription()
+            elif placemarks:
+                results[&quot;placemarks&quot;] = placemarks
+            completed = True
+            
+        geocoder.geocodeAddressString_completionHandler_(address, completion)
+        
+        while not completed:
+            NSRunLoop.currentRunLoop().runMode_beforeDate_(
+                &quot;NSDefaultRunLoopMode&quot;,
+                NSDate.dateWithTimeIntervalSinceNow_(0.1)
+            )
+        
+        if results[&quot;error&quot;]:
+            raise Exception(f&quot;Geocoding error: {results['error']}&quot;)
+</code></pre>
+
+    </main>
+  </body>
+  <footer class="text-center text-xs m-2">Copyright Avinash Kondeti</footer>
+</html>
